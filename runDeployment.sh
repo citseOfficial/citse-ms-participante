@@ -11,7 +11,7 @@ if [[ $dockerpid != "" ]];then
       docker rm $dockerpid
 fi
 docker build -t $dockerImageName:v1 .
-docker run -d -p 0009:0009 --name $dockerImageName --network citse-server $dockerImageName:v1
+docker run -d -p 0010:0010 --name $dockerImageName --network citse-server $dockerImageName:v1
 dockerImageId=`docker images | grep $dockerImageName | grep v1 | awk -F " " '{print $3}'`
 docker tag $dockerImageId $dockerImageName:v1
 docker rmi $(docker images -f "dangling=true" -q)
